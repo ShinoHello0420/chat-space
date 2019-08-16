@@ -2,7 +2,6 @@
 |Column  |Type   |Options                       |
 |--------|-------|------------------------------|
 |name    |string-|null: false|
-
 ### Association
 - has_many :users_groups
 - has_many :groups, through: :users_groups
