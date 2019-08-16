@@ -35,7 +35,6 @@ Things you may want to cover:
 - belongs_to :user
 
 
-
 ## commentsテーブル
 |Column  |Type   |Options                       |
 |--------|-------|------------------------------|
@@ -45,7 +44,6 @@ Things you may want to cover:
 ### Association
 - belongs_to :post
 - belongs_to :user
-
 
 
 ## postsテーブル
@@ -61,4 +59,12 @@ Things you may want to cover:
 - has_many  :tags,  through:  :posts_tags
 
 
+## groupsテーブル
+|Column  |Type   |Options                       |
+|--------|-------|------------------------------|
+|user_id |integer|null: false, foreign_key: true|
+|text    |text   |null: false                   |
+## Association
+- belongs_to :user
+- has_many :comments
 
