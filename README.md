@@ -67,4 +67,3 @@ Things you may want to cover:
 ## Association
 - belongs_to :user
 - has_many :comments
-
