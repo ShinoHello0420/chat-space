@@ -1,28 +1,3 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
 ## usersテーブル
 |Column  |Type   |Options                       |
 |--------|-------|------------------------------|
@@ -32,6 +7,8 @@ Things you may want to cover:
 ### Association
 - belongs_to :group
 - belongs_to :user
+- has_many :users_groups
+- has_many :users, through: :users_groups
 
 
 ## commentsテーブル
@@ -45,24 +22,20 @@ Things you may want to cover:
 - belongs_to :user
 
 
-## postsテーブル
+## users_groupsテーブル
 |Column |Type   |Options                       |
 |-------|-------|------------------------------|
-|title  |text   |null: false                   |
-|text   |text   |null: false                   |
 |user_id|integer|null: false, foreign_key: true|
+|name   |integer|null: false                   |
 ### Association
 - belongs_to :user
 - has_many :comments
-- has_many :posts_tags
-- has_many  :tags,  through:  :posts_tags
 
 
 ## groupsテーブル
 |Column  |Type   |Options                       |
 |--------|-------|------------------------------|
-|user_id |integer|null: false, foreign_key: true|
-|text    |text   |null: false                   |
+|name    |integer|null: false, foreign_key: true|
 ## Association
 - belongs_to :user
 - has_many :comments
