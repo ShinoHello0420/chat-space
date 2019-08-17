@@ -9,12 +9,12 @@
 
 
 ## commentsテーブル
-|Column  |Type   |Options                       |
-|--------|-------|------------------------------|
-|image   |text   |                              |
-|text    |text   |                              |
-|user_id |integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|Column  |Type      |Options                       |
+|--------|----------|------------------------------|
+|image   |string    |                              |
+|text    |text      |                              |
+|user_id |references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :group
 - belongs_to :user
@@ -24,10 +24,11 @@
 |Column  |Type      |Options                       |
 |--------|----------|------------------------------|
 |user    |references|null: false, foreign_key: true|
-|group_id|integer   |null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 ### Association
-- has_many :users, through: :users_groups
-- has_many :users_groups
+- belongs_to :user
+- belongs_to :group
+
 
 
 ## groupsテーブル
@@ -35,5 +36,6 @@
 |--------|-------|------------------------------|
 |name    |string |null: false                   |
 ## Association
-- belongs_to :user
 - has_many :comments
+- has_many :users_groups
+- has_many :users, through: :users_groups
