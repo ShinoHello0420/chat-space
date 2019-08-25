@@ -1,12 +1,25 @@
 $(function(){
   function buildHTML(message){
-    var html = `<p>
-                  <strong>
-                    <a href=/users/${message.user_id}>${message.user_name}</a>
-                    ：
-                  </strong>
-                  ${message.text}
-                </p>`
+    var image = if message.content.present?
+    var html = `<div class="message">
+                  <div class="upper-message">
+                    <div class="upper-message__user-name">
+                    ${ message.user.name }
+                    </div>
+                      <div class="upper-message__date">
+                      ${ message.created_at.strftime("%Y/%m/%d %H:%M") }
+                      </div>
+                    </div>
+                    <div class="lower-message">
+
+                    <p class="lower-message__content">
+                    ${ message.content }
+                    </p>
+                    ${ end }
+                    ${ image_tag message.image.url, class: 'lower-message__image' if message.image.present? }
+                    </div>
+                  </div>
+                </div>`;
     return html;
   }
   function scroll() {
@@ -17,6 +30,7 @@ $(function(){
     var formData = new FormData(this);
     var href = window.location.href + '/messages'
     var url = $(this).attr('action');
+    console.log(url)
     $.ajax({
       url: url,
       type: "POST",
@@ -26,10 +40,9 @@ $(function(){
       contentType: false
     })
     .done(function(data){
+      console.log(data); 
       var html = buildHTML(data);
       $('.messages').append(html);
-      $('.form__message').val('');
-      $('.form__submit').prop('disabled', false);
       scroll()
     })
     .fail(function(){
