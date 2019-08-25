@@ -1,20 +1,24 @@
 $(function(){
-  function buildHTML(comment){
+  function buildHTML(message){
     var html = `<p>
                   <strong>
-                    <a href=/users/${comment.user_id}>${comment.user_name}</a>
+                    <a href=/users/${message.user_id}>${message.user_name}</a>
                     ：
                   </strong>
-                  ${comment.text}
+                  ${message.text}
                 </p>`
     return html;
   }
-  $('#new_comment').on('submit', function(e){
+  function scroll() {
+    $('.messages').animate({scrollTop: $('.message')[0].scrollHeight});
+  }
+  $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    var href = window.location.href + '/comments'
+    var href = window.location.href + '/messages'
+    var url = $(this).attr('action');
     $.ajax({
-      url: href,
+      url: url,
       type: "POST",
       data: formData,
       dataType: 'json',
@@ -23,8 +27,14 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.comments').append(html)
-      $('.textbox').val('')
+      $('.messages').append(html);
+      $('.form__message').val('');
+      $('.form__submit').prop('disabled', false);
+      scroll()
+    })
+    .fail(function(){
+      alert('error')
+      $('.form__submit').prop('disabled', false);
     })
   })
 });
