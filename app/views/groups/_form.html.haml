@@ -14,15 +14,21 @@
 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
-      = f.label :users, "チャットメンバーを追加", class: 'chat-group-form__label', for:'user-search-field'
+      %label.chat-group-form__label{for: 'chat-group_チャットメンバーを追加'} チャットメンバーを追加
     .chat-group-form__field--right
       .chat-group-form__search.clearfix
         = f.text_field :users, id: 'user-search-field', class: 'chat-group-form__input', value: '', placeholder: '追加したいユーザー名を入力してください'
-      #user-search-result
+        #user-search-result
+  
+    //.chat-group-user.clearfix
+    //%p.chat-group-user__name
+    //%a.user-search-add.chat-group-user__btn.chat-group-user__btn--add{"data-user-id" => "${ user.id }", "data-user-name" => "${ user.name }"} 追加
+
+
 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
-      = f.label :user_ids, "チャットメンバー", class: 'chat-group-form__label'
+      %label.chat-group-form__label{for: "chat_group_チャットメンバー"} チャットメンバー
 
     .chat-group-form__field--right
       #chat-group-users
@@ -38,8 +44,4 @@
     .chat-group-form__field--left
     .chat-group-form__field--right
       = f.submit class: 'chat-group-form__action-btn'
-
-  .chat-group-user.clearfix
-    %p.chat-group-user__name
-    %a.user-search-add.chat-group-user__btn.chat-group-user__btn--add{"data-user-id" => "", "data-user-name" => ""} 追加
 
