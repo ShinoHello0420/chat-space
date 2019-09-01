@@ -102,3 +102,4 @@ $('#new_message').on('submit', function(e){
    }};
    setInterval(reloadMessages, 6000);
 });
+
