@@ -20,7 +20,7 @@ $(function() {
                   <p class='chat-group-user__name'>${ name }</p>
                   <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
                 </div>`
-                console.log(name, user_id)
+                
      member_list.append(html);
     }
  
@@ -35,11 +35,11 @@ $(function() {
       })
        
       .done(function(users) {
-        console.log(users);
+      
         $("#user-search-result").empty();
           if (users.length !== 0) {
             users.forEach(function(user){
-              console.log(user);
+      
             appendUser(user);
             });
           }

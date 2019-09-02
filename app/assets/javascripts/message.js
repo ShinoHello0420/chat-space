@@ -1,52 +1,32 @@
 $(function(){
   function buildHTML(message){
-      var content = message.content ? `${ message.content }` : "";
-      var img  = message.image ? `<img src="${ message.image }">` : "";
-        if ( message.image ) {
-      var html =
-       `<div class="message" data-message-id=${message.id}>
+  
+    image = (message.image.url) ? `<img class= "lower-message__image" img src=${message.image.url} >` : ""; 
+
+    var html =
+       `<div class="message" data-message-id="${message.id}"> 
           <div class="upper-message">
             <div class="upper-message__user-name">
               ${message.user_name}
             </div>
             <div class="upper-message__date">
-            
               ${message.date}
             </div>
           </div>
-          <div class="lower-message">
-            <p class="lower-message__content">
-              ${message.content}
-            </p>
-              ${img}
-          </div>
-        </div>`
-      return html;
-    } else {
-      var html =
-       `<div class="message" data-message-id=${message.id}>
-          <div class="upper-message">
-            <div class="upper-message__user-name">
-              ${message.user_name}
-            </div>
-            <div class="upper-message__date">
-             
-              ${message.date}
-            </div>
-          </div>
-          <div class="lower-message">
-            <img src="' + message.image.url + '" class="lower-message__image" >
+          <div class="lower-meesage">
             <p class="lower-message__content">
               ${message.content}
             </p>
           </div>
+          <img src=${message.image.url} >
         </div>`
-      return html;
-    };
+    return html;
+
   }
+
 $('#new_message').on('submit', function(e){
   e.preventDefault();
-  console.log('aaa');
+
   var formData = new FormData(this);
   var url = $(this).attr('action')
   $.ajax({
@@ -83,7 +63,7 @@ $('#new_message').on('submit', function(e){
        data: {id: last_message_id}
      })
      .done(function(messages) {
-
+    
        var insertHTML = '';
        messages.forEach(function (message) {
          insertHTML = buildHTML(message);
@@ -91,15 +71,15 @@ $('#new_message').on('submit', function(e){
        })
 
        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
-       console.log('success');
+       
      })
  
 
      .fail(function() {
- console.log('error');
+ 
        alert('自動更新に失敗しました');
      });
    }};
-   setInterval(reloadMessages, 6000);
+   setInterval(reloadMessages, 4000);
 });
 
