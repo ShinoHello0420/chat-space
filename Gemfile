@@ -64,3 +64,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-rails'
 gem 'remotipart'
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end
