@@ -36,7 +36,6 @@ $(document).on('turbolinks:load', function() {
       })
        
       .done(function(users) {
-      
         $("#user-search-result").empty();
           if (users.length !== 0) {
             users.forEach(function(user){
@@ -51,6 +50,7 @@ $(document).on('turbolinks:load', function() {
         alert('ユーザー検索に失敗しました');
       })
     });
+    
     
     $(function(){
       $(document).on('click', '.user-search-add', function() {
