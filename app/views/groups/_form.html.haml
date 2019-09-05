@@ -20,10 +20,6 @@
         = f.text_field :users, id: 'user-search-field', class: 'chat-group-form__input', value: '', placeholder: '追加したいユーザー名を入力してください'
         #user-search-result
 
-    //.chat-group-user.clearfix
-    //%p.chat-group-user__name
-    //%a.user-search-add.chat-group-user__btn.chat-group-user__btn--add{"data-user-id" => "${ user.id }", "data-user-name" => "${ user.name }"} 追加
-
 
 
   .chat-group-form__field.clearfix
@@ -33,15 +29,14 @@
     .chat-group-form__field--right
       #chat-group-users
         - @group.users.each do |user|
-          #chat-group-user.chat-group-user.clearfix.js-chat-member
+          #chat-group-user-8.chat-group-user.clearfix.js-chat-member{id: current_user.id}
             %input{name: 'group[user_ids][]', type: 'hidden', value: "#{ user.id }"}
-            //%input{name: 'group[user_ids][]', type: 'hidden', value: "#{ current_user.id }"}
             %p.chat-group-user__name
               = user.name
 
             %p.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn 
- 
-              削除
+              - unless current_user.id == user.id
+                削除
               
       #member_search_result
 
