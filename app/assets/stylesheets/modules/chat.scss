@@ -31,7 +31,12 @@
       margin-top: 28px;
       padding: 0 20px;
     }
+    .right-header__button{
+      color: $light_blue;
+      text-decoration: none;
+    }
   }
+
 
   .messages {
     background-color: #FAFAFA;
