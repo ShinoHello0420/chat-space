@@ -11,8 +11,8 @@ CarrierWave.configure do |config|
     aws_secret_access_key: Rails.application.secrets.aws_secret_access_key,
     region: 'ap-northeast-1' #例 'ap-northeast-1'
   }
-
+  
   config.fog_directory  = 'shinos-bucket'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/bucket'
+  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/shinos-bucket'
   # config.asset_host = 'https://s3-ここにリージョン名を入れます(※例 ap-northeast-1).amazonaws.com/ここにバケット名を入れます'
 end

@@ -1,8 +1,9 @@
-$(function(){
+$(document).on('turbolinks:load', function() {  
+//$(function(){
   function buildHTML(message){
-  
+ 
     image = (message.image.url) ? `<img class= "lower-message__image" img src=${message.image.url} >` : ""; 
-
+ 
     var html =
        `<div class="message" data-message-id="${message.id}"> 
           <div class="upper-message">
@@ -23,6 +24,7 @@ $(function(){
     return html;
 
   }
+ 
 
 $('#new_message').on('submit', function(e){
   e.preventDefault();
@@ -49,6 +51,7 @@ $('#new_message').on('submit', function(e){
     return false;
   });
 
+
    var reloadMessages = function() {
      //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
      if (window.location.href.match(/\/groups\/\d+\/messages/)){
@@ -63,7 +66,7 @@ $('#new_message').on('submit', function(e){
        data: {id: last_message_id}
      })
      .done(function(messages) {
-    
+
        var insertHTML = '';
        messages.forEach(function (message) {
          insertHTML = buildHTML(message);
@@ -73,7 +76,7 @@ $('#new_message').on('submit', function(e){
        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
        
      })
- 
+
 
      .fail(function() {
  
@@ -81,5 +84,5 @@ $('#new_message').on('submit', function(e){
      });
    }};
    setInterval(reloadMessages, 4000);
+  //});
 });
-
