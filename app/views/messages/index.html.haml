@@ -16,7 +16,8 @@
 
       .right-header
         .right-header__button
-          %a.right-header__button{:href => "/"} Edit
+        =link_to edit_group_path(@group.id),class:'right-header__button' do
+          Edit
 
     .messages
       .message
