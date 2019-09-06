@@ -58,7 +58,7 @@ $('#new_message').on('submit', function(e){
 
      $.ajax({
        url: 'api/messages',
-       type: 'get',
+       type: 'GET',
        dataType: 'json',
        data: {id: last_message_id}
      })
