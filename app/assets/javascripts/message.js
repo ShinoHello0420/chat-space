@@ -55,7 +55,7 @@ $('#new_message').on('submit', function(e){
    var reloadMessages = function() {
      if (window.location.href.match(/\/groups\/\d+\/messages/)){
      var last_message_id = $('.message:last').data("message-id");
-
+      console.log(last_message_id);
      $.ajax({
        url: 'api/messages',
        type: 'GET',
@@ -64,7 +64,6 @@ $('#new_message').on('submit', function(e){
      })
 
      .done(function(messages) {
-       console.log(messages)
        var insertHTML = '';
        messages.forEach(function (message) {
          insertHTML = buildHTML(message);
