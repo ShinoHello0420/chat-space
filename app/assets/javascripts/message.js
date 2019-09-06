@@ -49,14 +49,12 @@ $('#new_message').on('submit', function(e){
       alert('error');
     });
     return false;
-  });
+});
 
 
    var reloadMessages = function() {
      if (window.location.href.match(/\/groups\/\d+\/messages/)){
      var last_message_id = $('.message:last').data("message-id");
-     console.log("ok");
-     console.log(last_message_id);
      $.ajax({
        url: 'api/messages',
        type: 'GET',
@@ -65,14 +63,10 @@ $('#new_message').on('submit', function(e){
      })
 
      .done(function(messages) {
-       console.log('1');
-       console.log(messages);
        var insertHTML = '';
        messages.forEach(function (message) {
          insertHTML = buildHTML(message);
-         console.log('2');
          $('.messages').append(insertHTML);
-         console.log('3');
        })
 
        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');       
@@ -83,7 +77,8 @@ $('#new_message').on('submit', function(e){
  
        alert('自動更新に失敗しました');
      });
-   }};
+   }
+  };
    setInterval(reloadMessages, 4000);
   //});
 });
