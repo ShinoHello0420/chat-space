@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function() {  
-//$(function(){
   function buildHTML(message){
  
     var image = message.image == null ? "" : `<img class= "lower-message__image" img src="${message.image}"`
@@ -80,5 +79,4 @@ $('#new_message').on('submit', function(e){
    }
   };
    setInterval(reloadMessages, 4000);
-  //});
 });
