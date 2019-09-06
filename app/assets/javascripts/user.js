@@ -13,16 +13,16 @@ $(document).on('turbolinks:load', function() {
     return html;
 
   }
-    function appendMembers(name, user_id) {
-      var member_list = $("#member_search_result");
-      var html =`<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
-                  <input name='group[user_ids][]' type='hidden' value=${ user_id }>
-                  <p class='chat-group-user__name'>${ name }</p>
-                  <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
-                </div>`
+    // function appendMembers(name, user_id) {
+    //   var member_list = $("#member_search_result");
+    //   var html =`<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
+    //               <input name='group[user_ids][]' type='hidden' value=${ user_id }>
+    //               <p class='chat-group-user__name'>${ name }</p>
+    //               <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
+    //             </div>`
                 
-     member_list.append(html);
-    }
+    //  member_list.append(html);
+    // }
 
   $(function(){ 
   $("#user-search-field").on("keyup", function() {
@@ -50,9 +50,20 @@ $(document).on('turbolinks:load', function() {
       })
     });
   });
+});    
     
-    
+$(document).on('ready page:load', function() { 
     $(function(){
+      function appendMembers(name, user_id) {
+        var member_list = $("#member_search_result");
+        var html =`<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
+                    <input name='group[user_ids][]' type='hidden' value=${ user_id }>
+                    <p class='chat-group-user__name'>${ name }</p>
+                    <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
+                  </div>`
+                  
+       member_list.append(html);
+      }
       $(document).on('click', '.user-search-add', function() {
         var user_id = $(this).data("user-id");
         var name = $(this).data("user-name");
@@ -64,8 +75,11 @@ $(document).on('turbolinks:load', function() {
         $(this).parent().remove();
       });
      });
+
+
+});
  
-  });
+
   
 
 

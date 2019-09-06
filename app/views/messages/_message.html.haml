@@ -4,7 +4,6 @@
       = message.user.name
     .upper-message__date
       = message.created_at.strftime("%Y年 %m月 %d日 %H:%M")
-      //= message.config.time_zone = 'Asia/Tokyo'
   .lower-message
     - if message.content.present?
       %p.lower-message__content
