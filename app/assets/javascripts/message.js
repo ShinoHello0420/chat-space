@@ -66,7 +66,7 @@ $('#new_message').on('submit', function(e){
        console.log('1');
        var insertHTML = '';
        messages.forEach(function (message) {
-         insertHTML = buildHTML(message);
+         var insertHTML = buildHTML(message);
          console.log('2');
          $('.messages').append(insertHTML);
          console.log('3');
