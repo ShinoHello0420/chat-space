@@ -1,6 +1,7 @@
 $(document).on('turbolinks:load', function() {  
 //$(function(){
   function buildHTML(message){
+    console.log(message)
  
     var image = message.image == null ? "" : `<img class= "lower-message__image" img src="${message.image}"`
  
@@ -11,7 +12,7 @@ $(document).on('turbolinks:load', function() {
               ${message.user_name}
             </div>
             <div class="upper-message__date">
-              ${message.created_at}
+              ${message.date}
             </div>
           </div>
           <div class="lower-meesage">
@@ -63,6 +64,7 @@ $('#new_message').on('submit', function(e){
      })
 
      .done(function(messages) {
+       console.log(messages)
        var insertHTML = '';
        messages.forEach(function (message) {
          insertHTML = buildHTML(message);
