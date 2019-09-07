@@ -11,7 +11,7 @@ $(document).on('turbolinks:load', function() {
     search_list.append(html);
     // }
     return html;
-
+ 
   }
     // function appendMembers(name, user_id) {
     //   var member_list = $("#member_search_result");
@@ -43,14 +43,14 @@ $(document).on('turbolinks:load', function() {
             });
           }
         })
-
+      
 
       .fail(function() {
         alert('ユーザー検索に失敗しました');
       })
     });
   });
-});    
+});  
     
 $(document).on('ready page:load', function() { 
     $(function(){
@@ -76,7 +76,7 @@ $(document).on('ready page:load', function() {
       });
      });
 
-
+   
 });
  
 
